@@ -1,0 +1,57 @@
+<odoo>
+    <data>
+        <!--FORMULARIO LIBRO -->
+        <record id="library_book_form_view" model="ir.ui.view">
+            <field name="name">Library Book"</field>
+            <field name="model">library.book"</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--VISTA TREE -->
+        <record id="library_book_tree_view" model="ir.ui.view">
+            <field name="name">Library Book Tree"</field>
+            <field name="model">library.book"</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </tree>
+            </field>
+        </record>
+
+         <!-- ACTION VIEW -->
+         <record id="action_library_book" model="ir.actions.act_window">
+             <field name="name">Book</field>
+             <field name="type">ir.actions.act_window</field>
+             <field name="res_model">library.book</field>
+             <field name="view_mode">tree,form</field>
+             <field name="help" type="html">
+               <p class="oe_view_nocontent_create">
+               Crear nuevos libros
+               </p>
+             </field>
+         </record>
+
+        <!-- CREAR MENUS -->
+        <menuitem id="library_root" name="Library" sequence="0"/>
+        <menuitem id="library_category" name="Library" sequence="1" parent="library_root"/>
+        <menuitem id="library_book"
+                  parent ="library_category"
+                  name="Book"
+                  action="action_library_book"
+                  sequence="1"/>
+    </data>
+</odoo>
