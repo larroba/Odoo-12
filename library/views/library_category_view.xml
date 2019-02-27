@@ -1,15 +1,18 @@
 <odoo>
     <data>
-        <!--FORMULARIO LIBRO -->
-        <record id="library_book_form_view" model="ir.ui.view">
-            <field name="name">Library Book Form</field>
-            <field name="model">library.book</field>
+        <!--FORMULARIO CATEGORIA -->
+        <record id="library_category_form_view" model="ir.ui.view">
+            <field name="name">Library Categoria Form</field>
+            <field name="model">library.category</field>
             <field name="arch" type="xml">
-                <form string="Book Form">
+                <form string="Categoria Form">
                     <sheet>
                         <group>
                             <field name="name"/>
                             <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="book_id"/>
                         </group>
                     </sheet>
                 </form>
@@ -17,11 +20,11 @@
         </record>
 
         <!--VISTA TREE -->
-        <record id="library_book_tree_view" model="ir.ui.view">
-            <field name="name">Library Book Tree</field>
-            <field name="model">library.book</field>
+        <record id="library_category_tree_view" model="ir.ui.view">
+            <field name="name">Library Categoria Tree</field>
+            <field name="model">library.category</field>
             <field name="arch" type="xml">
-                <tree string="Book tree">
+                <tree string="Categoria tree">
                     <field name="name"/>
                     <field name="description"/>
                 </tree>
@@ -29,25 +32,23 @@
         </record>
 
          <!-- ACTION VIEW -->
-         <record id="action_library_book" model="ir.actions.act_window">
-             <field name="name">Libro</field>
+         <record id="action_library_category" model="ir.actions.act_window">
+             <field name="name">Categoria</field>
              <field name="type">ir.actions.act_window</field>
-             <field name="res_model">library.book</field>
+             <field name="res_model">library.category</field>
              <field name="view_mode">tree,form,graph</field>
              <field name="help" type="html">
                <p class="o_view_nocontent_smiling_face">
-               Crear nuevos libros
+               Crear nuevas categorias
                </p>
              </field>
          </record>
 
         <!-- CREAR MENUS -->
-        <menuitem id="library_root" name="Libros" sequence="0"/>
-        <menuitem id="library_category" name="Library" sequence="1" parent="library_root"/>
-        <menuitem id="library_book"
-                  parent ="library_category"
-                  name="Book"
-                  action="action_library_book"
+        <menuitem id="library_category_menu"
+                  parent ="library_category_level"
+                  name="Categoria"
+                  action="action_library_category"
                   sequence="1"/>
     </data>
 </odoo>

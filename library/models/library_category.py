@@ -3,8 +3,12 @@
 from odoo import models, fields
 
 
-class LibraryBook(models.Model):
-    _name = "library.book"
+class LibraryCategory(models.Model):
+    _name = "library.category"
 
-    name = fields.Char(string="Book")
-    description = fields.Text(string="Description")
+    name = fields.Char(string="categoria")
+    description = fields.Text(string="descripcion")
+
+    book_id=  fields.Many2one(
+        comodel_name="library.book",
+        string="Libro")

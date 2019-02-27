@@ -2,14 +2,19 @@
     <data>
         <!--FORMULARIO LIBRO -->
         <record id="library_book_form_view" model="ir.ui.view">
-            <field name="name">Library Book"</field>
-            <field name="model">library.book"</field>
+            <field name="name">Library Book Form</field>
+            <field name="model">library.book</field>
             <field name="arch" type="xml">
-                <form string="">
+                <form string="Book Form" delete="true">
                     <sheet>
                         <group>
                             <field name="name"/>
                             <field name="description"/>
+                            <field name="isbn"/>
+                            <field name="category_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="categ_count"/>
                         </group>
                     </sheet>
                 </form>
@@ -18,39 +23,36 @@
 
         <!--VISTA TREE -->
         <record id="library_book_tree_view" model="ir.ui.view">
-            <field name="name">Library Book Tree"</field>
-            <field name="model">library.book"</field>
+            <field name="name">Library Book Tree</field>
+            <field name="model">library.book</field>
             <field name="arch" type="xml">
-                <tree string="">
-                    <sheet>
-                        <group>
-                            <field name="name"/>
-                            <field name="description"/>
-                        </group>
-                    </sheet>
+                <tree string="Book tree" delete="true">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="categ_count"/>
                 </tree>
             </field>
         </record>
 
          <!-- ACTION VIEW -->
          <record id="action_library_book" model="ir.actions.act_window">
-             <field name="name">Book</field>
+             <field name="name">Libro</field>
              <field name="type">ir.actions.act_window</field>
              <field name="res_model">library.book</field>
-             <field name="view_mode">tree,form</field>
+             <field name="view_mode">tree,form,graph</field>
              <field name="help" type="html">
-               <p class="oe_view_nocontent_create">
+               <p class="o_view_nocontent_smiling_face">
                Crear nuevos libros
                </p>
              </field>
          </record>
 
         <!-- CREAR MENUS -->
-        <menuitem id="library_root" name="Library" sequence="0"/>
-        <menuitem id="library_category" name="Library" sequence="1" parent="library_root"/>
+        <menuitem id="library_root" name="Libros" sequence="0"/>
+        <menuitem id="library_category_level" name="Library" sequence="1" parent="library_root"/>
         <menuitem id="library_book"
-                  parent ="library_category"
-                  name="Book"
+                  parent ="library_category_level"
+                  name="Libro"
                   action="action_library_book"
                   sequence="1"/>
     </data>
